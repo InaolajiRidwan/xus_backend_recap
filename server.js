@@ -1,0 +1,38 @@
+// const express = require("express")
+import express from "express";
+import mongoose from "mongoose";
+
+import {
+  handleForgotPassword,
+  handleGetAllUser,
+  handleLogin,
+  handleResetPassword,
+  handleSignUp,
+  handleTestServer,
+} from "./controllers/index.js";
+import { authentication } from "./middleware/index.js";
+import routes from "./Routes/index.js";
+
+const app = express();
+app.use(express.json());
+
+const PORT = process.env.PORT || 3000;
+
+const MONGODB_URL =
+  "mongodb+srv://flame:flame@cluster0.93udrfz.mongodb.net/?appName=Cluster0";
+
+mongoose
+  .connect(MONGODB_URL)
+  .then(() => {
+    console.log("MONGO_DB connected 💻");
+    app.listen(PORT, () => {
+      console.log("server is running on 🏃🏼‍♂️‍➡️🏃🏼‍♂️‍➡️", PORT);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+app.use(routes)
+
+
