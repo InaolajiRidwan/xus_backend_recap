@@ -18,9 +18,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-const MONGODB_URL =
-  "mongodb+srv://flame:flame@cluster0.93udrfz.mongodb.net/?appName=Cluster0";
-
+const MONGODB_URL = process.env.MONGODB_URL
+  
 mongoose
   .connect(MONGODB_URL)
   .then(() => {
