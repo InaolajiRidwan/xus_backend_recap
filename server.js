@@ -1,6 +1,7 @@
 // const express = require("express")
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors"
 
 import {
   handleForgotPassword,
@@ -31,6 +32,8 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+app.use(cors())
 
 app.use(routes)
 
