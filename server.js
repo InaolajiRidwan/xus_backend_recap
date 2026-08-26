@@ -33,8 +33,13 @@ mongoose
     console.log(err);
   });
 
+
+
+
 app.use(cors())
 
 app.use(routes)
+
+
 
 

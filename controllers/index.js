@@ -59,8 +59,6 @@ const handleSignUp = async (req, res) => {
   });
 };
 
-
-
 const handleLogin = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -145,7 +143,7 @@ const handleForgotPassword = async (req, res) => {
   });
 };
 
-const handleResetPassword = async (req, res,) => {
+const handleResetPassword = async (req, res) => {
   const { password } = req.body;
 
   const token = req.header("Authorization");
@@ -173,8 +171,6 @@ const handleResetPassword = async (req, res,) => {
     message: "password successfully changed",
     newUser: user,
   });
-
-  
 };
 
 const handleGetAllUser = async (req, res) => {
@@ -185,6 +181,14 @@ const handleGetAllUser = async (req, res) => {
   });
 };
 
+const ping = async (req, res) => {
+  res.status(200).json({
+    message: "website ping",
+    status: "ok",
+    timeStamps: new Date(),
+  });
+};
+
 export {
   handleTestServer,
   handleSignUp,
@@ -192,4 +196,5 @@ export {
   handleGetAllUser,
   handleForgotPassword,
   handleResetPassword,
+  ping,
 };
